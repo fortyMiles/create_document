@@ -9,13 +9,15 @@ Question Describe:
 	    describe
 
 	    @Request(
-	    (response-data note)
+		{'/some/api/': 'get-information'}
 	    )
 
 	    Or
 
 	    @Request(
-		(some/api/, get-some-data)
+		(*name*, string),
+		(*phoen*, string),
+		(password, string),
 	    )
 
 	    @Auth(admin)
@@ -28,7 +30,7 @@ Question Describe:
 		       ))
 	    )
 
-	    @Errors(
+	    @!(
 		(404, can't find this person), 
 		(409, confict id), 
 	    )
@@ -43,13 +45,12 @@ Question Describe:
 	    descirbe
 
 	    ## Auth:
-	       admin
+	       auth: none | login | admin
 
 	    ## Author:
 	       minchiuan
 
 	    ## Request:
-		auth: none | login | admin
 		type: url | json
 		example 1: Get user info
 			{
@@ -75,3 +76,16 @@ Question Describe:
 		409: confilct id.
 
 	'''
+
+
+# Sub Question:
+
+  1. Change (key, value) to {"key": "value"}, change
+     ((key, (sub-key-1, sub-value-1)) to
+     {"key": {"sub-key-1": "sub-value-1"}}
+
+     change [(key, value), (key2, value-2), (key3, value-3)]
+     to [{"key": "value"}, {"key2": "value-2"}, {"key3": "value-3"}]
+
+     change ((key1, value1), (key2, value2), (key3, value3))
+     to {"key1": "value1", "key2": "value2", "key3": "value3"}
