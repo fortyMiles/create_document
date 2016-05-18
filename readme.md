@@ -9,25 +9,24 @@ Question Describe:
 	    describe
 
 	    @Request(
-		{'/some/api/': 'get-information'}
+		/some/api/ get-information
 	    )
 
 	    Or
 
 	    @Request(
-		(*name*, string),
-		(*phoen*, string),
-		(password, string),
+		*name* string
+		*phoen* string
+		password string
 	    )
 
 	    @Auth(admin)
 
 	    @Response(
-		(id, some-id),
-		(name, some-name),
-		(pay, ((id, pay-id),
-		       (name, pay-name)
-		       ))
+		id String
+		name String
+		pay (id String; name String; age Int)
+		infos [id String; name String]
 	    )
 
 	    @!(
@@ -89,3 +88,20 @@ Question Describe:
 
      change ((key1, value1), (key2, value2), (key3, value3))
      to {"key1": "value1", "key2": "value2", "key3": "value3"}
+
+
+###
+
+	[name value
+	name-1 value1
+	name-2 value2]
+
+	=>
+
+	[{
+	   "name": "value",
+	   "name-1": "value1", 
+	   "name-2": "value2", 
+	}]
+
+	name value, name2 valu2
